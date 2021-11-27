@@ -6,7 +6,7 @@ buildscript {
     }
     ext.hilt_version = '2.38.1'
     dependencies {
-        classpath "com.android.tools.build:gradle:7.0.0"
+        classpath "com.android.tools.build:gradle:7.0.3"
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.5.31"
         classpath "com.google.dagger:hilt-android-gradle-plugin:$hilt_version"
 
@@ -15,6 +15,13 @@ buildscript {
     }
 }
 
+
 task clean(type: Delete) {
     delete rootProject.buildDir
+}
+ext {
+    lifecycleVersion = '2.4.0'
+    pagingVersion = '3.1.0'
+    coroutines = '1.5.0'
+    roomVersion = '2.3.0'
 }

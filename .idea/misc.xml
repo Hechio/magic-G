@@ -3,11 +3,19 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="app/src/main/res/drawable/border_card_orange.xml" value="0.23645833333333333" />
+        <entry key="app/src/main/res/drawable/border_cyan.xml" value="0.23645833333333333" />
+        <entry key="app/src/main/res/drawable/border_light_blue.xml" value="0.23645833333333333" />
+        <entry key="app/src/main/res/drawable/border_light_red.xml" value="0.23645833333333333" />
+        <entry key="app/src/main/res/drawable/ic_baseline_error_outline_24.xml" value="0.23645833333333333" />
+        <entry key="app/src/main/res/drawable/rarity_gradient.xml" value="0.23645833333333333" />
         <entry key="app/src/main/res/drawable/search_view_background.xml" value="0.23645833333333333" />
         <entry key="app/src/main/res/layout/content_appbar.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/fragment_card_details.xml" value="0.21614583333333334" />
+        <entry key="app/src/main/res/layout/fragment_cards.xml" value="0.21614583333333334" />
         <entry key="app/src/main/res/layout/fragment_sets.xml" value="0.22083333333333333" />
-        <entry key="app/src/main/res/layout/item_cards_list.xml" value="0.22083333333333333" />
-        <entry key="app/src/main/res/layout/item_sets_list.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/item_cards_list.xml" value="0.34615384615384615" />
+        <entry key="app/src/main/res/layout/item_sets_list.xml" value="0.67" />
       </map>
     </option>
   </component>
@@ -16,5 +24,12 @@
   </component>
   <component name="ProjectType">
     <option name="id" value="Android" />
+  </component>
+  <component name="VisualizationToolProject">
+    <option name="state">
+      <ProjectState>
+        <option name="scale" value="0.21614583333333334" />
+      </ProjectState>
+    </option>
   </component>
 </project>

@@ -1,13 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="purple_200">#FFBB86FC</color>
-    <color name="purple_500">#FF6200EE</color>
-    <color name="purple_700">#FF3700B3</color>
-    <color name="teal_200">#FF03DAC5</color>
-    <color name="teal_700">#FF018786</color>
+    <color name="color_primary_light">#ff6997</color>
+    <color name="color_primary_dark">#a4003f</color>
+    <color name="color_primary">#db3069</color>
+    <color name="color_accent">#fecb2f</color>
+    <color name="color_accent_dark">#c79b00</color>
+    <color name="color_accent_light">#fffe66</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="my_black">#1D1D1D</color>
-    <color name="light_grey">#3F3F3F</color>
-    <color name="orange">#FE623A</color>
+    <color name="primary_grey">#989898</color>
+    <color name="primary_text_color">#666666</color>
+    <color name="text_black">#222222</color>
+    <color name="light_grey">#0E0D0A</color>
+    <color name="light_red">#bf0603</color>
+    <color name="red">#f30707</color>
+    <color name="blue">#3d0ee7</color>
+    <color name="green">#06b815</color>
+    <color name="red_40">#EF82B4</color>
+    <color name="blue_40">#37CEFF</color>
+    <color name="green_40">#9bdeac</color>
+    <color name="black_40">#8d99ae</color>
+    <color name="white_40">#e1e5f2</color>
+    <color name="cyan">#177e89</color>
+    <color name="card_orange">#eb5e28</color>
+    <color name="light_blue">#0496ff</color>
+    <color name="primary_text_color_2">#7F7786</color>
+    <color name="text_black_1">#120927</color>
 </resources>

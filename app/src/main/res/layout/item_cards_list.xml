@@ -1,6 +1,96 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tool="http://schemas.android.com/tools"
+    android:layout_margin="@dimen/padding_5">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="180dp"
+        android:layout_height="220dp"
+        app:cardElevation="0dp"
+        android:layout_marginTop="@dimen/margin_20"
+        app:cardBackgroundColor="@color/red_40"/>
+    <FrameLayout
+        android:layout_width="160dp"
+        android:layout_height="230dp"
+        android:translationZ="90dp"
+        android:orientation="vertical"
+        android:layout_gravity="center_horizontal">
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cv_color"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            app:strokeColor="@color/white"
+            app:strokeWidth="5dp"
+            app:cardBackgroundColor="@color/red"
+            app:cardCornerRadius="12dp"
+            android:layout_marginTop="25dp"
+            android:layout_gravity="end"/>
+            <com.google.android.material.progressindicator.CircularProgressIndicator
+                android:id="@+id/pb"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:translationZ="90dp"
+                android:indeterminateOnly="true"/>
+            <com.google.android.material.imageview.ShapeableImageView
+                android:layout_width="140dp"
+                android:layout_height="200dp"
+                 android:layout_gravity="center|top"
+                android:src="@drawable/card"
+                />
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardBackgroundColor="#ffffff"
+            app:cardCornerRadius="@dimen/margin_20"
+            android:layout_gravity="bottom"
+            app:cardElevation="0dp"
+            android:layout_marginVertical="@dimen/padding_10">
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/padding_10"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tv_rarity"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/rarity_gradient"
+                    android:fontFamily="@font/montserrat_regular"
+                    android:padding="@dimen/padding_5"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/text_medium"
+
+                    tool:text="Uncommon" />
+
+                <TextView
+                    android:id="@+id/tv_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/montserrat_bold"
+                    android:textAlignment="textStart"
+                    android:textColor="@color/text_black_1"
+                    tool:text="Fog Elemental" />
+
+                <TextView
+                    android:id="@+id/tv_type"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/montserrat_regular"
+                    android:textColor="@color/primary_text_color_2"
+                    android:textSize="@dimen/text_medium"
+                    tool:text="Creature — Elemental" />
+
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+        </com.google.android.material.card.MaterialCardView>
+
+    </FrameLayout>
+
+</FrameLayout>

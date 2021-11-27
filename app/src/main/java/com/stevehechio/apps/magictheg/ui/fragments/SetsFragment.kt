@@ -1,4 +1,4 @@
-package com.stevehechio.apps.magictheg.fragments
+package com.stevehechio.apps.magictheg.ui.fragments
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
