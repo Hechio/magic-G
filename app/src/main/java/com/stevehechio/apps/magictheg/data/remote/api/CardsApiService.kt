@@ -12,7 +12,7 @@ interface CardsApiService {
     //https://api.magicthegathering.io/v1/cards?set=10E&page=1&pageSize=50
 
     @GET("cards")
-    fun fetchCards(
+    suspend fun fetchCards(
         @Query("set") setCode: String,
         @Query("page") page: Int,
         @Query("pageSize") itemsPerPage: Int
@@ -22,7 +22,7 @@ interface CardsApiService {
 
 
     @GET("sets/{set_code}/booster")
-    fun fetchBoosterCards(
+    suspend fun fetchBoosterCards(
         @Path("set_code")setCode: String
     ): CardsApiResponse
 }

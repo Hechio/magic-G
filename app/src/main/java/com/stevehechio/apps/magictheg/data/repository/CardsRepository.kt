@@ -20,7 +20,9 @@ class CardsRepository @Inject constructor(
 
     @ExperimentalPagingApi
     fun getCardsResults(setCode: String): Flow<PagingData<CardsEntity>>{
-        val pagingSourceFactory = {appDatabase.cardsDao().getAllCards(setCode)}
+        val pagingSourceFactory = {
+            appDatabase.cardsDao().getAllCards(setCode)
+        }
         return Pager(
             config = PagingConfig(pageSize = NETWORK_PAGE_SIZE,enablePlaceholders = false),
             remoteMediator = CardsRemoteMediator(setCode,service,appDatabase),

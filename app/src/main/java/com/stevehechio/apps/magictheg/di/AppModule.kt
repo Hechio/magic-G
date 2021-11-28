@@ -8,7 +8,9 @@ import com.google.gson.GsonBuilder
 import com.stevehechio.apps.magictheg.data.local.db.AppDatabase
 import com.stevehechio.apps.magictheg.data.remote.api.CardsApiService
 import com.stevehechio.apps.magictheg.data.remote.api.SetsApiService
+import com.stevehechio.apps.magictheg.data.repository.CardsRepository
 import com.stevehechio.apps.magictheg.data.repository.SetsRepository
+import com.stevehechio.apps.magictheg.ui.viewmodels.CardsViewModel
 import com.stevehechio.apps.magictheg.ui.viewmodels.SetsViewModel
 import com.stevehechio.apps.magictheg.utils.AppConstants
 import dagger.Module
@@ -83,6 +85,8 @@ class AppModule {
         return retrofit.create(SetsApiService::class.java)
     }
 
+    @Provides
+    @Singleton
     fun provideCardApiService(retrofit: Retrofit):CardsApiService{
         return  retrofit.create(CardsApiService::class.java)
     }
@@ -93,7 +97,7 @@ class AppModule {
         return Room.databaseBuilder(
             context,
             AppDatabase::class.java, AppConstants.DB_NAME
-        ).build()
+        ).fallbackToDestructiveMigration().build()
     }
 
     @Provides
@@ -101,9 +105,22 @@ class AppModule {
     fun provideSetsRepository(service: SetsApiService, appDatabase: AppDatabase): SetsRepository {
         return SetsRepository(service,appDatabase)
     }
+
+    @Provides
+    @Singleton
+    fun provideCardsRepository(service: CardsApiService, appDatabase: AppDatabase): CardsRepository {
+        return CardsRepository(service,appDatabase)
+    }
+
     @Provides
     @Singleton
     fun  provideSetsViewModel(setsRepository: SetsRepository): SetsViewModel {
         return SetsViewModel(setsRepository)
+    }
+
+    @Provides
+    @Singleton
+    fun provideCardsViewModel(cardsRepository: CardsRepository): CardsViewModel {
+        return CardsViewModel(cardsRepository)
     }
 }

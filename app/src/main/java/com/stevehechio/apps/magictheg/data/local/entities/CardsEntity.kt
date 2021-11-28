@@ -21,17 +21,17 @@ data class CardsEntity(
     @TypeConverters(ColorListTypeConvertor::class)
     val colors: List<String>?,
     @Nullable
-    val type: String,
+    val type: String?,
     @Nullable
-    val rarity: String,
+    val rarity: String?,
     @Nullable
-    @field:SerializedName("set") val setCode: String,
+    @field:SerializedName("set") val setCode: String?,
     @Nullable
-    val setName: String,
+    val setName: String?,
     @Nullable
-    val text: String,
+    val text: String?,
     @Nullable
-    val flavor: String,
+    val flavor: String?,
     @Nullable
     val imageUrl: String?
 ): Serializable
