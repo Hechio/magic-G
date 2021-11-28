@@ -4,7 +4,6 @@ import androidx.paging.ExperimentalPagingApi
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
-import com.stevehechio.apps.magictheg.data.local.dao.SetsDao
 import com.stevehechio.apps.magictheg.data.local.db.AppDatabase
 import com.stevehechio.apps.magictheg.data.local.entities.SetsEntity
 import com.stevehechio.apps.magictheg.data.remote.api.SetsApiService
@@ -28,6 +27,6 @@ class SetsRepository @Inject constructor(
         ).flow
     }
     companion object {
-        const val NETWORK_PAGE_SIZE = 30
+        const val NETWORK_PAGE_SIZE = 40
     }
 }

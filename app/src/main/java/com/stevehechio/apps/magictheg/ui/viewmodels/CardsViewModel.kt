@@ -6,22 +6,22 @@ import androidx.paging.ExperimentalPagingApi
 import androidx.paging.PagingData
 import androidx.paging.cachedIn
 import androidx.paging.map
-import com.stevehechio.apps.magictheg.data.local.entities.SetsEntity
-import com.stevehechio.apps.magictheg.data.repository.SetsRepository
+import com.stevehechio.apps.magictheg.data.local.entities.CardsEntity
+import com.stevehechio.apps.magictheg.data.repository.CardsRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 import javax.inject.Inject
 
 /**
- * Created by stevehechio on 11/27/21
+ * Created by stevehechio on 11/28/21
  */
 @HiltViewModel
-class SetsViewModel @Inject constructor(val setsRepository: SetsRepository): ViewModel() {
+class CardsViewModel @Inject constructor(val repository: CardsRepository): ViewModel() {
     @ExperimentalPagingApi
-    fun fetchMagicSets(): Flow<PagingData<SetsEntity>>{
-        return setsRepository.getSetResults().map {
-            it.map { magicSets -> magicSets }
+    fun fetchMagicCards(setCode: String): Flow<PagingData<CardsEntity>> {
+        return repository.getCardsResults(setCode).map {
+            it.map { cardsForSet -> cardsForSet }
         }.cachedIn(viewModelScope)
     }
 }

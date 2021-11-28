@@ -23,7 +23,7 @@ private const val SETS_STARTING_PAGE_INDEX = 1
 @ExperimentalPagingApi
 class SetsRemoteMediator (
     private val service: SetsApiService,
-    val appDatabase: AppDatabase
+    private val appDatabase: AppDatabase
 ): RemoteMediator<Int, SetsEntity>() {
 
     override suspend fun initialize(): InitializeAction {

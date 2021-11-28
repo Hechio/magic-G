@@ -6,6 +6,7 @@ import androidx.room.Room
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.stevehechio.apps.magictheg.data.local.db.AppDatabase
+import com.stevehechio.apps.magictheg.data.remote.api.CardsApiService
 import com.stevehechio.apps.magictheg.data.remote.api.SetsApiService
 import com.stevehechio.apps.magictheg.data.repository.SetsRepository
 import com.stevehechio.apps.magictheg.ui.viewmodels.SetsViewModel
@@ -80,6 +81,10 @@ class AppModule {
     @Singleton
     fun provideSetApiService(retrofit: Retrofit): SetsApiService {
         return retrofit.create(SetsApiService::class.java)
+    }
+
+    fun provideCardApiService(retrofit: Retrofit):CardsApiService{
+        return  retrofit.create(CardsApiService::class.java)
     }
 
     @Provides
