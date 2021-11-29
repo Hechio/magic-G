@@ -8,17 +8,15 @@ import com.stevehechio.apps.magictheg.data.local.dao.CardsDao
 import com.stevehechio.apps.magictheg.data.local.dao.CardsRemoteKeysDao
 import com.stevehechio.apps.magictheg.data.local.dao.RemoteKeysDao
 import com.stevehechio.apps.magictheg.data.local.dao.SetsDao
-import com.stevehechio.apps.magictheg.data.local.entities.CardsEntity
-import com.stevehechio.apps.magictheg.data.local.entities.CardsRemoteKeys
-import com.stevehechio.apps.magictheg.data.local.entities.RemoteKeys
-import com.stevehechio.apps.magictheg.data.local.entities.SetsEntity
+import com.stevehechio.apps.magictheg.data.local.entities.*
 import com.stevehechio.apps.magictheg.utils.AppConstants
 
 /**
  * Created by stevehechio on 11/27/21
  */
 
-@Database(entities = [CardsEntity::class,SetsEntity::class,RemoteKeys::class,CardsRemoteKeys::class],
+@Database(entities = [CardsEntity::class,SetsEntity::class,RemoteKeys::class,
+    CardsRemoteKeys::class, CardsBoosterEntity::class],
     version = AppConstants.DB_VERSION,exportSchema = false)
 @TypeConverters(ColorListTypeConvertor::class)
 abstract class AppDatabase: RoomDatabase() {

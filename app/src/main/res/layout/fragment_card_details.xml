@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout
+    android:id="@+id/cl_main"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -8,16 +9,30 @@
     android:background="@color/red_40"
     tools:context=".ui.fragments.CardDetailsFragment">
 
-    <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/iv_card"
-        android:layout_width="match_parent"
-        android:layout_marginHorizontal="30dp"
-        android:layout_height="320dp"
+    <FrameLayout
+        android:id="@+id/fl_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:src="@drawable/card"
-        android:layout_marginTop="@dimen/margin_20"/>
+        app:layout_constraintEnd_toEndOf="parent">
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/iv_card"
+            android:layout_width="match_parent"
+            android:layout_marginHorizontal="30dp"
+            android:layout_height="320dp"
+            android:src="@drawable/card"
+            android:layout_marginTop="@dimen/margin_20"/>
+        <com.google.android.material.progressindicator.CircularProgressIndicator
+            android:id="@+id/pb"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:translationZ="90dp"
+            android:indeterminateOnly="true"/>
+    </FrameLayout>
+
+
 
     <TextView
         android:id="@+id/tv_name"
@@ -30,7 +45,7 @@
         android:textColor="@color/text_black_1"
         android:textSize="@dimen/text_xx_big"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/iv_card"
+        app:layout_constraintTop_toBottomOf="@+id/fl_image"
         tools:text="Fog Elemental" />
 
     <TextView
@@ -45,7 +60,7 @@
         android:textColor="@color/white"
         android:textSize="@dimen/text_medium"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/iv_card"
+        app:layout_constraintTop_toBottomOf="@+id/fl_image"
         tools:text="Uncommon" />
 
     <TextView

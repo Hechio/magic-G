@@ -1,6 +1,8 @@
 package com.stevehechio.apps.magictheg.data.remote.api
 
+import com.stevehechio.apps.magictheg.data.remote.model.CardBoosterApiResponse
 import com.stevehechio.apps.magictheg.data.remote.model.CardsApiResponse
+import io.reactivex.Observable
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
@@ -22,7 +24,7 @@ interface CardsApiService {
 
 
     @GET("sets/{set_code}/booster")
-    suspend fun fetchBoosterCards(
+    fun fetchBoosterCards(
         @Path("set_code")setCode: String
-    ): CardsApiResponse
+    ): Observable<CardBoosterApiResponse>
 }

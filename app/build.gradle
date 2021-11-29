@@ -61,6 +61,7 @@ dependencies {
     implementation "androidx.room:room-ktx:$roomVersion"
     implementation "androidx.paging:paging-runtime-ktx:$pagingVersion"
     kapt "androidx.room:room-compiler:$roomVersion"
+    implementation "androidx.room:room-rxjava2:$roomVersion"
 
 
     // Retrofit using RxJava2, Okhttp, Okhttp logging interceptor, Gson

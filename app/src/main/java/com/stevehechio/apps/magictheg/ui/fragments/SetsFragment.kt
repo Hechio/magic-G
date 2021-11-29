@@ -16,8 +16,6 @@ import androidx.paging.LoadState
 import androidx.paging.map
 import androidx.recyclerview.widget.GridLayoutManager
 import com.stevehechio.apps.magictheg.R
-import com.stevehechio.apps.magictheg.data.RemotePresentationState
-import com.stevehechio.apps.magictheg.data.asRemotePresentationState
 import com.stevehechio.apps.magictheg.databinding.FragmentSetsBinding
 import com.stevehechio.apps.magictheg.ui.adapters.SetsAdapter
 import com.stevehechio.apps.magictheg.ui.viewmodels.SetsViewModel
@@ -79,7 +77,7 @@ class SetsFragment : Fragment() {
     @SuppressLint("SetTextI18n")
     private fun fetchMagicSets(){
         lifecycleScope.launch {
-            viewModel.fetchMagicSets().distinctUntilChanged().collectLatest {
+            viewModel.fetchMagicSets().collectLatest {
                mAdapter.submitData(it)
             }
         }

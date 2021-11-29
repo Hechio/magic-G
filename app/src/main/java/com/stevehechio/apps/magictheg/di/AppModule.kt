@@ -97,7 +97,7 @@ class AppModule {
         return Room.databaseBuilder(
             context,
             AppDatabase::class.java, AppConstants.DB_NAME
-        ).allowMainThreadQueries().fallbackToDestructiveMigration().build()
+        ).fallbackToDestructiveMigration().build()
     }
 
     @Provides
@@ -108,8 +108,8 @@ class AppModule {
 
     @Provides
     @Singleton
-    fun provideCardsRepository(service: CardsApiService, appDatabase: AppDatabase): CardsRepository {
-        return CardsRepository(service,appDatabase)
+    fun provideCardsRepository(application: Application,service: CardsApiService, appDatabase: AppDatabase): CardsRepository {
+        return CardsRepository(application,service,appDatabase)
     }
 
     @Provides

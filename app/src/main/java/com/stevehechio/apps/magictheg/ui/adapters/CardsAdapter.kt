@@ -18,6 +18,7 @@ import com.bumptech.glide.request.target.Target
 import com.stevehechio.apps.magictheg.R
 import com.stevehechio.apps.magictheg.data.local.entities.CardsEntity
 import com.stevehechio.apps.magictheg.databinding.ItemCardsListBinding
+import com.stevehechio.apps.magictheg.utils.AppConstants
 import com.stevehechio.apps.magictheg.utils.GetColorNumber
 import com.stevehechio.apps.magictheg.utils.gone
 import java.util.*
@@ -70,7 +71,7 @@ class CardsAdapter(val context: Context): PagingDataAdapter<CardsEntity,CardsAda
             R.color.red_40, R.color.blue_40,R.color.green_40, R.color.black_40, R.color.white_40)
             fun bindViews(cardsEntity: CardsEntity){
                 val mUrl = cardsEntity.imageUrl
-                    ?: "https://firebasestorage.googleapis.com/v0/b/nurture-bfc09.appspot.com/o/others%2Funknown.png?alt=media&token=000c7a7e-8a10-4f88-830e-1402af969d8a"
+                    ?: AppConstants.defaultUrl
                 Glide.with(context)
                     .load(mUrl)
                     .centerCrop()
