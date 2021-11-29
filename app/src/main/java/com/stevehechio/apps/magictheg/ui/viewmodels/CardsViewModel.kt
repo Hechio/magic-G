@@ -19,7 +19,7 @@ import javax.inject.Inject
 @HiltViewModel
 class CardsViewModel @Inject constructor(val repository: CardsRepository): ViewModel() {
     @ExperimentalPagingApi
-    fun fetchMagicCards(setCode: String): Flow<PagingData<CardsEntity>> {
+   fun fetchMagicCards(setCode: String): Flow<PagingData<CardsEntity>> {
         return repository.getCardsResults(setCode).map {
             it.map { cardsForSet -> cardsForSet }
         }.cachedIn(viewModelScope)

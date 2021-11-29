@@ -7,7 +7,12 @@ import androidx.paging.PagingData
 import com.stevehechio.apps.magictheg.data.local.db.AppDatabase
 import com.stevehechio.apps.magictheg.data.local.entities.CardsEntity
 import com.stevehechio.apps.magictheg.data.remote.api.CardsApiService
+import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.distinctUntilChanged
+import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 /**
@@ -16,17 +21,16 @@ import javax.inject.Inject
 class CardsRepository @Inject constructor(
     val service: CardsApiService,
     val appDatabase: AppDatabase
-) {
-
+){
     @ExperimentalPagingApi
-    fun getCardsResults(setCode: String): Flow<PagingData<CardsEntity>>{
-        val pagingSourceFactory = {
-            appDatabase.cardsDao().getAllCards(setCode)
-        }
+   fun getCardsResults(setCode: String): Flow<PagingData<CardsEntity>> {
+
         return Pager(
             config = PagingConfig(pageSize = NETWORK_PAGE_SIZE,enablePlaceholders = false),
             remoteMediator = CardsRemoteMediator(setCode,service,appDatabase),
-            pagingSourceFactory = pagingSourceFactory
+            pagingSourceFactory = {
+                    appDatabase.cardsDao().getAllCards(setCode)
+            }
         ).flow
 
     }
@@ -35,4 +39,5 @@ class CardsRepository @Inject constructor(
     companion object {
         const val NETWORK_PAGE_SIZE = 20
     }
+
 }

@@ -6,6 +6,7 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import com.stevehechio.apps.magictheg.data.local.entities.CardsEntity
+import kotlinx.coroutines.flow.Flow
 
 /**
  * Created by stevehechio on 11/27/21

@@ -97,7 +97,7 @@ class AppModule {
         return Room.databaseBuilder(
             context,
             AppDatabase::class.java, AppConstants.DB_NAME
-        ).fallbackToDestructiveMigration().build()
+        ).allowMainThreadQueries().fallbackToDestructiveMigration().build()
     }
 
     @Provides

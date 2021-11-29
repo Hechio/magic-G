@@ -86,13 +86,8 @@ class CardsFragment : Fragment() {
     fun fetchCardsInSet(setCode: String, isBooster: Boolean){
 
         lifecycleScope.launch {
-            if (isBooster){
-            //Todo booster here
-                Toast.makeText(requireContext(),"To do boster",Toast.LENGTH_LONG).show()
-            }else{
-                viewModel.fetchMagicCards(setCode).distinctUntilChanged().collectLatest {
-                    mAdapter.submitData(it)
-                }
+            viewModel.fetchMagicCards(setCode).distinctUntilChanged().collectLatest {
+                mAdapter.submitData(it)
             }
 
         }

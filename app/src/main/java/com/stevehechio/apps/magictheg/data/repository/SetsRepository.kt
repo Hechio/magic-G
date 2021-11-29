@@ -19,7 +19,11 @@ class SetsRepository @Inject constructor(
 ) {
     @ExperimentalPagingApi
     fun getSetResults(): Flow<PagingData<SetsEntity>> {
-        val pagingSourceFactory = {appDatabase.setsDao().getAllSets()}
+        val pagingSourceFactory = {
+
+            appDatabase.setsDao().getAllSets()
+
+        }
         return Pager(
             config = PagingConfig(pageSize = NETWORK_PAGE_SIZE, enablePlaceholders = false),
             remoteMediator = SetsRemoteMediator(service, appDatabase),
