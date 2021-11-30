@@ -58,7 +58,7 @@ Test automation have also been achieved using CircleCi.
 The app is available in both day and night theme.
 
 
-<img src="https://user-images.githubusercontent.com/47601553/144119212-f72b4b42-02bd-41d9-8826-eb8c671b1f6d.png" width="200" style="max-width:100%;">    <img src="https://user-images.githubusercontent.com/47601553/144119340-f519a9d0-f03b-45d3-9ea7-17e0bf2202a7.png" width="200" style="max-width:100%;">   <img src="https://user-images.githubusercontent.com/47601553/144119432-7cbdce23-e80f-4e49-ab6e-29d154c5facb.png" width="200" style="max-width:100%;">    <img src="https://user-images.githubusercontent.com/47601553/144119615-399ab4fc-57bc-40d1-9ee6-feaccd4c68e8.png" width="200" style="max-width:100%;"></br></br><img src="https://user-images.githubusercontent.com/47601553/144119681-5807a6eb-6c74-453d-81a0-655e19cdc531.png" width="200" style="max-width:100%;"> </br></br>
+<img src="https://user-images.githubusercontent.com/47601553/144119212-f72b4b42-02bd-41d9-8826-eb8c671b1f6d.png" width="200" style="max-width:100%;">    <img src="https://user-images.githubusercontent.com/47601553/144119340-f519a9d0-f03b-45d3-9ea7-17e0bf2202a7.png" width="200" style="max-width:100%;">   <img src="https://user-images.githubusercontent.com/47601553/144119432-7cbdce23-e80f-4e49-ab6e-29d154c5facb.png" width="200" style="max-width:100%;">  <img src="https://user-images.githubusercontent.com/47601553/144119681-5807a6eb-6c74-453d-81a0-655e19cdc531.png" width="200" style="max-width:100%;"> </br></br>
 
 
 Libraries used in the whole application are:
