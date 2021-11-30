@@ -40,19 +40,25 @@ private var _binding: FragmentCardDetailsBinding? = null
            if (isBooter){
                 val entity =  it.getSerializable(CARD_ENTITY) as CardsBoosterEntity
                binding.tvName.text = entity.name
-               binding.tvColor.text = entity.colors?.get(0) ?: "UnKnown"
-               binding.tvRarity.text = entity.rarity
+               binding.tvColor.text = entity.colors?.get(0) ?: "UnKnown Color"
+               binding.tvRarity.text = entity.rarity ?: "Undefine card rarity"
+               binding.tvType.text = entity.text ?: "Undefine card type"
                val mUrl = entity.imageUrl
                    ?: AppConstants.defaultUrl
                loadImage(mUrl)
+               binding.tvTextDes.text = entity.text ?: "Undefine card text"
+               binding.tvFlavorDes.text = entity.flavor ?: "Undefine card flavor"
             }else {
                val entity =  it.getSerializable(CARD_ENTITY) as CardsEntity
                binding.tvName.text = entity.name
-               binding.tvColor.text = entity.colors?.get(0) ?: "UnKnown"
-               binding.tvRarity.text = entity.rarity
+               binding.tvColor.text = entity.colors?.get(0) ?: "UnKnown color"
+               binding.tvRarity.text = entity.rarity ?: "Undefine card rarity"
+               binding.tvType.text = entity.text ?: "Undefine card type"
                val mUrl = entity.imageUrl
                    ?: AppConstants.defaultUrl
                loadImage(mUrl)
+               binding.tvTextDes.text = entity.text  ?: "Undefine card text"
+               binding.tvFlavorDes.text = entity.flavor ?: "Undefine card flavor"
             }
 
         }

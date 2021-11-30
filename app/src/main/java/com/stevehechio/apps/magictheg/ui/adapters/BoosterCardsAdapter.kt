@@ -65,11 +65,11 @@ class BoosterCardsAdapter(val context: Context):ListAdapter<CardsBoosterEntity,B
         }
     }
     inner class BoosterCardViewHolder(val binding: ItemCardsListBinding): RecyclerView.ViewHolder(binding.root){
-        private val mColors = listOf(
-            R.color.red, R.color.blue, R.color.green, R.color.black, R.color.white)
-        private val mColors40 = listOf(
-            R.color.red_40, R.color.blue_40, R.color.green_40, R.color.black_40, R.color.white_40)
+
+
         fun bindViews(cardsEntity: CardsBoosterEntity){
+            val mColors: IntArray = context.resources.getIntArray(R.array.mColors)
+            val mColors40: IntArray = context.resources.getIntArray(R.array.mColors40)
             val mUrl = cardsEntity.imageUrl
                 ?: AppConstants.defaultUrl
             Glide.with(context)

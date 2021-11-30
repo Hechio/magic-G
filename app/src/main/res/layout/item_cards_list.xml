@@ -8,14 +8,14 @@
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/cv_back"
-        android:layout_width="180dp"
+        android:layout_width="160dp"
         android:layout_height="220dp"
         app:cardElevation="0dp"
         app:cardCornerRadius="@dimen/padding_5"
         android:layout_marginTop="@dimen/margin_20"
         app:cardBackgroundColor="@color/red_40"/>
     <FrameLayout
-        android:layout_width="160dp"
+        android:layout_width="140dp"
         android:layout_height="230dp"
         android:translationZ="90dp"
         android:orientation="vertical"
@@ -24,7 +24,7 @@
             android:id="@+id/cv_color"
             android:layout_width="24dp"
             android:layout_height="24dp"
-            app:strokeColor="@color/white"
+            app:strokeColor="#D7D6D6"
             app:strokeWidth="5dp"
             app:cardBackgroundColor="@color/red"
             app:cardCornerRadius="12dp"
@@ -39,10 +39,10 @@
                 android:indeterminateOnly="true"/>
             <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/iv_card"
-                android:layout_width="140dp"
+                android:layout_width="120dp"
                 android:layout_height="200dp"
                  android:layout_gravity="center|top"
-                android:src="@drawable/card"
+                app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize5Percent"
                 />
         <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"

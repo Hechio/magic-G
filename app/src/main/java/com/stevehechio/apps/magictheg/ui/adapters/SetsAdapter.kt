@@ -12,11 +12,13 @@ import com.stevehechio.apps.magictheg.R
 import com.stevehechio.apps.magictheg.data.local.entities.SetsEntity
 import com.stevehechio.apps.magictheg.databinding.ItemSetsListBinding
 import java.util.*
+import android.content.Context
+
 
 /**
  * Created by stevehechio on 11/28/21
  */
-class SetsAdapter : PagingDataAdapter<SetsEntity, SetsAdapter.SetsViewHolder>(SET_COMPARATOR) {
+class SetsAdapter(val context: Context) : PagingDataAdapter<SetsEntity, SetsAdapter.SetsViewHolder>(SET_COMPARATOR) {
     private var lastPosition = -1
     var onClickLikedListener :OnClickItemListener? = null
 
@@ -58,13 +60,13 @@ class SetsAdapter : PagingDataAdapter<SetsEntity, SetsAdapter.SetsViewHolder>(SE
 
     inner class SetsViewHolder(private val binding: ItemSetsListBinding):
         RecyclerView.ViewHolder(binding.root){
-        private val mColors = listOf(R.color.light_red,R.color.light_blue,R.color.cyan, R.color.green,
-            R.color.card_orange,R.color.color_accent_dark)
+
         private val images = listOf(R.drawable.ic_dia_cards,R.drawable.ic_drop_card,
             R.drawable.ic_drop_dia_card,R.drawable.ic_show_data_cards)
         fun bindViews(setsEntity: SetsEntity){
-            val rnds = (mColors.indices).random()
-            val randomColor = mColors[rnds]
+            val androidColors: IntArray = context.resources.getIntArray(R.array.cardColors)
+            val randomColor = androidColors[Random().nextInt(androidColors.size)]
+
             binding.cvSet.setCardBackgroundColor(randomColor)
             binding.cvSet2.strokeColor = randomColor
             binding.tvBooster.setBackgroundColor(randomColor)

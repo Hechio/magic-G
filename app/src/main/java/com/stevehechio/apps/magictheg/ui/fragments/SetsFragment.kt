@@ -55,7 +55,7 @@ class SetsFragment : Fragment() {
     }
 
     private fun setUpViews() {
-        mAdapter = SetsAdapter()
+        mAdapter = SetsAdapter(requireContext())
         viewModel = ViewModelProvider(this).get(SetsViewModel::class.java)
         binding.rv.apply {
             adapter = mAdapter

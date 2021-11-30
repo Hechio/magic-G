@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<ScrollView
     android:id="@+id/cl_main"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
@@ -9,19 +9,35 @@
     android:background="@color/red_40"
     tools:context=".ui.fragments.CardDetailsFragment">
 
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context=".ui.fragments.CardDetailsFragment">
+    <TextView
+        android:id="@+id/tv_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/montserrat_bold"
+        android:textAlignment="textStart"
+        android:textColor="@color/text_black_1"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginVertical="@dimen/padding_10"
+        tools:text="Fog Elemental" />
+
     <FrameLayout
         android:id="@+id/fl_image"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_name"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/iv_card"
-            android:layout_width="match_parent"
+            android:layout_width="230dp"
             android:layout_marginHorizontal="30dp"
             android:layout_height="320dp"
-            android:src="@drawable/card"
             android:layout_marginTop="@dimen/margin_20"/>
         <com.google.android.material.progressindicator.CircularProgressIndicator
             android:id="@+id/pb"
@@ -33,47 +49,138 @@
     </FrameLayout>
 
 
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cv_details"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardBackgroundColor="#ffffff"
+        app:cardCornerRadius="@dimen/margin_20"
+        android:layout_marginHorizontal="@dimen/margin_20"
+        app:layout_constraintTop_toBottomOf="@+id/fl_image"
+        android:layout_gravity="bottom"
+        app:cardElevation="0dp"
+        android:layout_marginVertical="@dimen/padding_10">
 
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/padding_10"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_rarity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rarity_gradient"
+                android:fontFamily="@font/montserrat_regular"
+                android:padding="@dimen/padding_5"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_medium"
+                android:layout_marginVertical="@dimen/padding_10"
+                tools:text="Uncommon" />
+
+            <TextView
+                android:id="@+id/tv_color"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/montserrat_bold"
+                android:textAlignment="textStart"
+                android:textColor="@color/text_black_1"
+                android:layout_marginVertical="@dimen/padding_10"
+                tools:text="Fog Elemental" />
+
+            <TextView
+                android:id="@+id/tv_type"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/montserrat_regular"
+                android:textColor="@color/primary_text_color_2"
+                android:textSize="@dimen/text_medium"
+                tools:text="Creature — Elemental" />
+
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+    </com.google.android.material.card.MaterialCardView>
     <TextView
-        android:id="@+id/tv_name"
+        android:id="@+id/tv_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="28dp"
-        android:layout_marginTop="56dp"
         android:fontFamily="@font/montserrat_bold"
         android:textAlignment="textStart"
         android:textColor="@color/text_black_1"
-        android:textSize="@dimen/text_xx_big"
+        app:layout_constraintTop_toBottomOf="@+id/cv_details"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/fl_image"
-        tools:text="Fog Elemental" />
-
-    <TextView
-        android:id="@+id/tv_rarity"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="60dp"
-        android:layout_marginEnd="28dp"
-        android:background="@drawable/rarity_gradient"
-        android:fontFamily="@font/montserrat_regular"
-        android:padding="@dimen/padding_5"
-        android:textColor="@color/white"
-        android:textSize="@dimen/text_medium"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/fl_image"
-        tools:text="Uncommon" />
+        app:layout_constraintHorizontal_bias="0"
+        android:layout_marginHorizontal="30dp"
+        android:layout_marginVertical="@dimen/padding_10"
+        android:text="@string/text" />
 
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cv_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardBackgroundColor="#ffffff"
+        app:cardCornerRadius="@dimen/margin_20"
+        android:layout_marginHorizontal="@dimen/margin_20"
+        app:layout_constraintTop_toBottomOf="@+id/tv_text"
+        android:layout_gravity="bottom"
+        app:cardElevation="0dp"
+        android:layout_marginVertical="@dimen/padding_10">
+        <TextView
+            android:id="@+id/tv_text_des"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/montserrat_regular"
+            android:textColor="@color/primary_text_color_2"
+            android:textSize="@dimen/text_medium"
+            tools:text="Creature — Elemental"
+            android:layout_margin="@dimen/padding_10"
+            />
+    </com.google.android.material.card.MaterialCardView>
     <TextView
-        android:id="@+id/tv_color"
+        android:id="@+id/tv_flavor"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="28dp"
-        android:layout_marginTop="72dp"
-        android:fontFamily="@font/montserrat_regular"
-        android:textColor="@color/primary_text_color_2"
-        android:textSize="@dimen/text_medium"
+        android:fontFamily="@font/montserrat_bold"
+        android:textAlignment="textStart"
+        android:textColor="@color/text_black_1"
+        app:layout_constraintTop_toBottomOf="@+id/cv_text"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_name"
-        tools:text="Creature — Elemental" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0"
+        android:layout_marginHorizontal="30dp"
+        android:layout_marginVertical="@dimen/padding_10"
+        android:text="@string/flavor" />
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cv_flavor"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardBackgroundColor="#ffffff"
+        app:cardCornerRadius="@dimen/margin_20"
+        android:layout_marginHorizontal="@dimen/margin_20"
+        app:layout_constraintTop_toBottomOf="@+id/tv_flavor"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_gravity="bottom"
+        app:cardElevation="0dp"
+        android:layout_marginVertical="@dimen/padding_10">
+        <TextView
+            android:id="@+id/tv_flavor_des"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/montserrat_regular"
+            android:textColor="@color/primary_text_color_2"
+            android:textSize="@dimen/text_medium"
+            tools:text="Creature — Elemental"
+            android:layout_margin="@dimen/padding_10"
+            />
+    </com.google.android.material.card.MaterialCardView>
+
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>

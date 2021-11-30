@@ -26,4 +26,30 @@
     <color name="light_blue">#0496ff</color>
     <color name="primary_text_color_2">#7F7786</color>
     <color name="text_black_1">#120927</color>
+
+    <integer-array name="cardColors">
+        <item>@color/light_red</item>
+        <item>@color/light_blue</item>
+        <item>@color/cyan</item>
+        <item>@color/green</item>
+        <item>@color/card_orange</item>
+        <item>@color/color_accent_dark</item>
+    </integer-array>
+
+    <integer-array name="mColors">
+        <item>@color/red</item>
+        <item>@color/blue</item>
+        <item>@color/green</item>
+        <item>@color/black</item>
+        <item>@color/white</item>
+    </integer-array>
+    <integer-array name="mColors40">
+        <item>@color/red_40</item>
+        <item>@color/blue_40</item>
+        <item>@color/green_40</item>
+        <item>@color/black_40</item>
+        <item>@color/white_40</item>
+    </integer-array>
+
+
 </resources>

@@ -115,7 +115,7 @@ class CardsFragment : Fragment() {
             loadBoosterCards(setCode)
         } else{
             lifecycleScope.launch {
-                viewModel.fetchMagicCards(setCode).collectLatest {
+                viewModel.fetchMagicCards(setCode).distinctUntilChanged().collectLatest {
                     Log.d("CardsFragment", "fetch cards : $it")
                     mAdapter.submitData(it)
                 }

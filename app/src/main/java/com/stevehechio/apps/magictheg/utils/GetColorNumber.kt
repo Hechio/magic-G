@@ -4,27 +4,22 @@ package com.stevehechio.apps.magictheg.utils
  * Created by stevehechio on 11/28/21
  */
 
-enum class MyColors {
-    Red, Blue, Green,  White, Black
-}
-
-
 object GetColorNumber {
     fun getColorNumber(color: String): Int{
         return when {
-            color.equals(MyColors.Red.name,true) -> {
+            color.equals("Red",true) -> {
                 0
             }
-            color.equals(MyColors.Blue.name,true) -> {
+            color.equals("Blue",true) -> {
                 1
             }
-            color.equals(MyColors.Green.name,true) -> {
+            color.equals("Green",true) -> {
                 2
             }
-            color.equals(MyColors.White.name,true) -> {
+            color.equals("White",true) -> {
                 3
             }
-            color.equals(MyColors.Black.name,true) -> {
+            color.equals("Black",true) -> {
                 4
             }
             else -> {
