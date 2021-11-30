@@ -9,8 +9,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.view.isVisible
+import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import androidx.paging.ExperimentalPagingApi
 import androidx.paging.LoadState
@@ -48,9 +51,8 @@ class CardsFragment : Fragment() {
 
     private lateinit var mAdapter: CardsAdapter
     private lateinit var mAdapter2: BoosterCardsAdapter
-    private lateinit var viewModel: CardsViewModel
+    val viewModel: CardsViewModel by activityViewModels()
 
-    private var searchJob: Job? = null
 
 
     override fun onCreateView(
@@ -81,7 +83,6 @@ class CardsFragment : Fragment() {
         binding.tvName.text = title
         mAdapter = CardsAdapter(requireContext())
         mAdapter2 = BoosterCardsAdapter(requireContext())
-        viewModel = ViewModelProvider(this).get(CardsViewModel::class.java)
         binding.rv.apply {
             adapter = if (isBooster == true) mAdapter2 else mAdapter
             setHasFixedSize(true)
@@ -120,15 +121,15 @@ class CardsFragment : Fragment() {
         if (isBooster){
             loadBoosterCards(setCode)
         } else{
-            searchJob?.cancel()
-            searchJob = lifecycleScope.launch {
-                viewModel.fetchMagicCards(setCode).collectLatest {
-                    Log.d("CardsFragment", "fetch cards : $it")
-                    mAdapter.submitData(it)
-                }
+             viewLifecycleOwner.lifecycleScope.launch {
+                 viewModel.fetchMagicCards(setCode).collect {
+                     Log.d("CardsFragment", "fetch cards : $it")
+                     mAdapter.submitData(it)
+                 }
+
             }
 
-            lifecycleScope.launch {
+            viewLifecycleOwner.lifecycleScope.launch {
                 mAdapter.loadStateFlow.collect { loadState ->
                     binding.rv.isVisible =  loadState.source.refresh is LoadState.NotLoading ||
                             loadState.mediator?.refresh is LoadState.NotLoading
@@ -194,6 +195,7 @@ class CardsFragment : Fragment() {
     }
     override fun onDestroy() {
         super.onDestroy()
+        viewModelStore.clear()
         _binding = null
     }
     companion object {

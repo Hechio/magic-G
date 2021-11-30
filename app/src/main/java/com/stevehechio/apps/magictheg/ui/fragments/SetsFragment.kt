@@ -8,8 +8,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.view.isVisible
+import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import androidx.paging.ExperimentalPagingApi
 import androidx.paging.LoadState
@@ -36,7 +40,7 @@ import kotlinx.coroutines.launch
 class SetsFragment : Fragment() {
     private var _binding: FragmentSetsBinding? = null
     private val binding get() = _binding!!
-    lateinit var viewModel: SetsViewModel
+    val viewModel: SetsViewModel by activityViewModels()
     lateinit var mAdapter: SetsAdapter
 
     override fun onCreateView(
@@ -51,12 +55,10 @@ class SetsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setUpViews()
-        fetchMagicSets()
     }
 
     private fun setUpViews() {
         mAdapter = SetsAdapter(requireContext())
-        viewModel = ViewModelProvider(this).get(SetsViewModel::class.java)
         binding.rv.apply {
             adapter = mAdapter
             setHasFixedSize(true)
@@ -72,14 +74,15 @@ class SetsFragment : Fragment() {
             }
 
         })
+        fetchMagicSets()
     }
 
 
     @SuppressLint("SetTextI18n")
     private fun fetchMagicSets(){
         viewLifecycleOwner.lifecycleScope.launch {
-            viewModel.fetchMagicSets().collectLatest {
-               mAdapter.submitData(it)
+            viewModel.fetchMagicSets().collect {
+                mAdapter.submitData(it)
             }
         }
 
@@ -99,6 +102,8 @@ class SetsFragment : Fragment() {
             }
         }
     }
+
+
 
     override fun onDestroy() {
         super.onDestroy()

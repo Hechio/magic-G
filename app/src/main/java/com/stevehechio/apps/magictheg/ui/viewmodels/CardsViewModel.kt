@@ -28,7 +28,7 @@ import javax.inject.Inject
 class CardsViewModel @Inject constructor(val repository: CardsRepository): BaseViewModel() {
     @ExperimentalPagingApi
    fun fetchMagicCards(setCode: String): Flow<PagingData<CardsEntity>> {
-        return repository.getCardsResults(setCode).cachedIn(viewModelScope)
+        return repository.getCardsResults(setCode)
     }
 
     private val boostersLiveData: MutableLiveData<Resource<List<CardsBoosterEntity>>> =
