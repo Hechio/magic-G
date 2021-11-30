@@ -28,6 +28,7 @@ import com.stevehechio.apps.magictheg.utils.gone
 import com.stevehechio.apps.magictheg.utils.visible
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.distinctUntilChanged
@@ -48,6 +49,8 @@ class CardsFragment : Fragment() {
     private lateinit var mAdapter: CardsAdapter
     private lateinit var mAdapter2: BoosterCardsAdapter
     private lateinit var viewModel: CardsViewModel
+
+    private var searchJob: Job? = null
 
 
     override fun onCreateView(
@@ -81,6 +84,7 @@ class CardsFragment : Fragment() {
         viewModel = ViewModelProvider(this).get(CardsViewModel::class.java)
         binding.rv.apply {
             adapter = if (isBooster == true) mAdapter2 else mAdapter
+            setHasFixedSize(true)
             layoutManager = GridLayoutManager(requireContext(),2)
         }
         mAdapter.setOnClickedItem(object : CardsAdapter.OnClickItemListener{
@@ -106,16 +110,19 @@ class CardsFragment : Fragment() {
 
         })
         if (setCode == null)return
+
         fetchCardsInSet(setCode!!,isBooster ?: false)
     }
 
     @SuppressLint("SetTextI18n")
     fun fetchCardsInSet(setCode: String, isBooster: Boolean){
+        Log.d("CardsFragment", "set code: $setCode")
         if (isBooster){
             loadBoosterCards(setCode)
         } else{
-            lifecycleScope.launch {
-                viewModel.fetchMagicCards(setCode).distinctUntilChanged().collectLatest {
+            searchJob?.cancel()
+            searchJob = lifecycleScope.launch {
+                viewModel.fetchMagicCards(setCode).collectLatest {
                     Log.d("CardsFragment", "fetch cards : $it")
                     mAdapter.submitData(it)
                 }
@@ -140,6 +147,7 @@ class CardsFragment : Fragment() {
 
 
     }
+
 
     private fun loadBoosterCards(setCode: String){
         viewModel.getBoosterLiveData().observe(viewLifecycleOwner, { response ->

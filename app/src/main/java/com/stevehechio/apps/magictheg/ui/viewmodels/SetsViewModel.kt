@@ -20,8 +20,6 @@ import javax.inject.Inject
 class SetsViewModel @Inject constructor(val setsRepository: SetsRepository): ViewModel() {
     @ExperimentalPagingApi
     fun fetchMagicSets(): Flow<PagingData<SetsEntity>>{
-        return setsRepository.getSetResults().map {
-            it.map { magicSets -> magicSets }
-        }.cachedIn(viewModelScope)
+        return setsRepository.getSetResults().cachedIn(viewModelScope)
     }
 }

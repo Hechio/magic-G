@@ -42,7 +42,7 @@ private var _binding: FragmentCardDetailsBinding? = null
                binding.tvName.text = entity.name
                binding.tvColor.text = entity.colors?.get(0) ?: "UnKnown Color"
                binding.tvRarity.text = entity.rarity ?: "Undefine card rarity"
-               binding.tvType.text = entity.text ?: "Undefine card type"
+               binding.tvType.text = entity.type ?: "Undefine card type"
                val mUrl = entity.imageUrl
                    ?: AppConstants.defaultUrl
                loadImage(mUrl)

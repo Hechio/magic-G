@@ -59,6 +59,7 @@ class SetsFragment : Fragment() {
         viewModel = ViewModelProvider(this).get(SetsViewModel::class.java)
         binding.rv.apply {
             adapter = mAdapter
+            setHasFixedSize(true)
             layoutManager = GridLayoutManager(requireContext(),2)
         }
         mAdapter.setOnClickedItem(object : SetsAdapter.OnClickItemListener{
@@ -76,13 +77,13 @@ class SetsFragment : Fragment() {
 
     @SuppressLint("SetTextI18n")
     private fun fetchMagicSets(){
-        lifecycleScope.launch {
+        viewLifecycleOwner.lifecycleScope.launch {
             viewModel.fetchMagicSets().collectLatest {
                mAdapter.submitData(it)
             }
         }
 
-        lifecycleScope.launch {
+        viewLifecycleOwner.lifecycleScope.launch {
             mAdapter.loadStateFlow.collect { loadState ->
                 binding.rv.isVisible =  loadState.source.refresh is LoadState.NotLoading ||
                         loadState.mediator?.refresh is LoadState.NotLoading

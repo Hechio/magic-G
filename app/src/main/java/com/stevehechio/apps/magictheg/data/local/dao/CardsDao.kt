@@ -1,5 +1,6 @@
 package com.stevehechio.apps.magictheg.data.local.dao
 
+import androidx.lifecycle.LiveData
 import androidx.paging.PagingSource
 import androidx.room.Dao
 import androidx.room.Insert
@@ -8,6 +9,7 @@ import androidx.room.Query
 import com.stevehechio.apps.magictheg.data.local.entities.CardsBoosterEntity
 import com.stevehechio.apps.magictheg.data.local.entities.CardsEntity
 import io.reactivex.Observable
+import kotlinx.coroutines.flow.Flow
 
 /**
  * Created by stevehechio on 11/27/21
@@ -28,7 +30,7 @@ interface CardsDao {
     That way, the cads table becomes the source of data for Paging. */
 
     @Query("SELECT * FROM MAGIC_CARDS_TABLE WHERE setCode = :queryString")
-    fun getAllCards(queryString: String): PagingSource<Int, CardsEntity>
+    fun getAllCards(queryString: String): PagingSource<Int,CardsEntity>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertBooster(cardsBoosterEntity: CardsBoosterEntity)

@@ -34,16 +34,13 @@ class CardsRepository @Inject constructor(
     val appDatabase: AppDatabase
 ): BaseRepository{
     private val compositeDisposable = CompositeDisposable()
+
     @ExperimentalPagingApi
    fun getCardsResults(setCode: String): Flow<PagingData<CardsEntity>> {
-
         return Pager(
             config = PagingConfig(pageSize = NETWORK_PAGE_SIZE,enablePlaceholders = false),
-            remoteMediator = CardsRemoteMediator(setCode,service,appDatabase),
-            pagingSourceFactory = {
-                    appDatabase.cardsDao().getAllCards("%${setCode.replace(' ','%')}%")
-            }
-        ).flow
+            remoteMediator = CardsRemoteMediator(setCode,service,appDatabase)
+        ){appDatabase.cardsDao().getAllCards(setCode)}.flow
 
     }
 
@@ -91,7 +88,7 @@ class CardsRepository @Inject constructor(
 
 
     companion object {
-        const val NETWORK_PAGE_SIZE = 20
+        const val NETWORK_PAGE_SIZE = 25
     }
 
     override fun addDisposable(disposable: Disposable) {

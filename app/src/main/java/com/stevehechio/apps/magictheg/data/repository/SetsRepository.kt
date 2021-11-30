@@ -17,18 +17,14 @@ class SetsRepository @Inject constructor(
     val service: SetsApiService,
     val appDatabase: AppDatabase
 ) {
+
     @ExperimentalPagingApi
     fun getSetResults(): Flow<PagingData<SetsEntity>> {
-        val pagingSourceFactory = {
 
-            appDatabase.setsDao().getAllSets()
-
-        }
         return Pager(
             config = PagingConfig(pageSize = NETWORK_PAGE_SIZE, enablePlaceholders = false),
-            remoteMediator = SetsRemoteMediator(service, appDatabase),
-            pagingSourceFactory = pagingSourceFactory
-        ).flow
+            remoteMediator = SetsRemoteMediator(service, appDatabase)
+        ){appDatabase.setsDao().getAllSets()}.flow
     }
     companion object {
         const val NETWORK_PAGE_SIZE = 40

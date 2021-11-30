@@ -15,7 +15,9 @@ import com.stevehechio.apps.magictheg.data.repository.CardsRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.flow.map
 import javax.inject.Inject
 
@@ -26,9 +28,7 @@ import javax.inject.Inject
 class CardsViewModel @Inject constructor(val repository: CardsRepository): BaseViewModel() {
     @ExperimentalPagingApi
    fun fetchMagicCards(setCode: String): Flow<PagingData<CardsEntity>> {
-        return repository.getCardsResults(setCode).map {
-            it.map { cardsForSet -> cardsForSet }
-        }.cachedIn(viewModelScope)
+        return repository.getCardsResults(setCode).cachedIn(viewModelScope)
     }
 
     private val boostersLiveData: MutableLiveData<Resource<List<CardsBoosterEntity>>> =

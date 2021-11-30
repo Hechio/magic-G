@@ -25,10 +25,10 @@ class SetsRemoteMediator (
     private val service: SetsApiService,
     private val appDatabase: AppDatabase
 ): RemoteMediator<Int, SetsEntity>() {
-
     override suspend fun initialize(): InitializeAction {
         return InitializeAction.LAUNCH_INITIAL_REFRESH
     }
+
     override suspend fun load(
         loadType: LoadType,
         state: PagingState<Int, SetsEntity>

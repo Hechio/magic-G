@@ -1,6 +1,7 @@
 package com.stevehechio.apps.magictheg.data.remote.api
 
 import com.stevehechio.apps.magictheg.data.remote.model.SetsApiResponse
+import io.reactivex.Observable
 import retrofit2.http.GET
 import retrofit2.http.Query
 
@@ -15,6 +16,10 @@ interface SetsApiService {
         @Query("page") page: Int,
         @Query("pageSize") itemsPerPage: Int
     ):SetsApiResponse
+
+
+    @GET("sets/")
+    fun fetchSetsForTest(): Observable<SetsApiResponse>
 
 
 }

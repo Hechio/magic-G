@@ -12,6 +12,7 @@ import com.stevehechio.apps.magictheg.data.local.entities.RemoteKeys
 import com.stevehechio.apps.magictheg.data.remote.api.CardsApiService
 import retrofit2.HttpException
 import java.io.IOException
+import java.util.concurrent.TimeUnit
 
 /**
  * Created by stevehechio on 11/28/21
